@@ -10,24 +10,28 @@ pool:
   vmImage: ubuntu-latest
 strategy:
   matrix:
-    Python37:
-      python.version: '3.7'
+    # Python37:
+    #   python.version: '3.7'
     Python39:
       python.version: '3.9'
 
 steps:
-- task: UsePythonVersion@0
+# - task: UsePythonVersion@0
+#   inputs:
+#     versionSpec: '$(python.version)'
+#   displayName: 'Use Python $(python.version)'
+
+# - script: |
+#     python -m pip install --upgrade pip
+#     pip install -r requirements.txt
+#     python -m pytest -v tests/test_generator.py
+#   displayName: 'Install dependencies'
+
+# - script: |
+#     pip install pytest pytest-azurepipelines
+#     pytest
+#   displayName: 'pytest'
+- task: PythonScript@0
   inputs:
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
-
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    python -m pytest -v tests/test_generator.py
-  displayName: 'Install dependencies'
-
-- script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'pytest'
+    scriptSource: 'inline'
+    script: 'python -m pytest -v'
