@@ -24,6 +24,7 @@ steps:
 - script: |
     python -m pip install --upgrade pip
     pip install -r requirements.txt
+    python -m pytest -v tests/test_generator.py
   displayName: 'Install dependencies'
 
 - script: |
