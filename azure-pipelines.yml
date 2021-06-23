@@ -34,4 +34,4 @@ steps:
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
-    script: 'python -m pytest -v'
+    script: 'python -m pytest -v tests/test_generator.py'
