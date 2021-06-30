@@ -27,10 +27,10 @@ steps:
 #     python -m pytest -v tests/test_generator.py
   displayName: 'Install dependencies'
 
-- script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'pytest'
+# - script: |
+#     pip install pytest pytest-azurepipelines
+#     pytest
+#   displayName: 'pytest'
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
